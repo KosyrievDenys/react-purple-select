@@ -1,0 +1,16 @@
+.borderChoice {
+  border:        3px solid #D0D5DD;
+  border-radius: 6px;
+  .choice {
+    padding:         10px;
+    border:          2px solid transparent;
+    border-radius:   6px;
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+    cursor:          pointer;
+    &:hover {
+      border: 2px solid #FF0098;
+    }
+  }
+}

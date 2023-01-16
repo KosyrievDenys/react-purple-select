@@ -1,11 +1,10 @@
 * {
-  outline:     none;
-  box-sizing:  border-box;
-  margin:      0;
-  padding:     0;
-  font-family: 'Apercu', sans-serif; //
-  color:       black;
-  font-size:   16px;
+  outline:    none;
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+  color:      black;
+  font-size:  16px;
 }
 
 html,
@@ -29,14 +28,6 @@ body {
   min-height:     100%;
 }
 
-main {
-  flex:            1 0 auto;
-  position:        relative;
-  display:         flex;
-  justify-content: center;
-  align-items:     center;
-}
-
 .footer {
   flex: 0 0 auto;
 }
@@ -56,4 +47,49 @@ main {
 li {
   list-style: none;
   padding:    0;
+}
+
+.selected-list.external-list {
+  max-width:        301px;
+  width:            100%;
+  max-height:       283px;
+  overflow:         auto;
+  border:           3px solid #D0D5DD;
+  border-radius:    6px;
+  position:         absolute;
+  top:              223px;
+  left:             50%;
+  background-color: white;
+  padding:          0 10px 10px;
+  cursor:           pointer;
+  transform:        translateX(-50%);
+  .selected-item {
+    padding-top: 5px;
+    .selected-block {
+      display:         flex;
+      justify-content: space-between;
+      align-items:     center;
+    }
+    .selected-folder {
+      display:     flex;
+      align-items: center;
+    }
+    .selected-icon {
+      //opacity: 0;
+      //&-active {
+      //  opacity: 1;
+      //}
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .selected-folder {
+    display:     flex;
+    align-items: center;
+  }
+  .selected-icon, .icon-second {
+    width:        14px;
+    margin: 7px;
+  }
 }

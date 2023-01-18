@@ -16,13 +16,61 @@ export const InternalLists = (
     books,
     index
   }) => {
+
   const [openListValues, setOpenListValues] = useState(false);
   const [activeValue, setActiveValue] = useState(false);
+  // const [indexList, setIndexList] = useState(0);
+  const [newBook2, setNewBook2] = useState([]);
 
   const openList = () => {
     setOpenListValues(!openListValues)
   }
 
+  const activateValue = () => {
+    const newBook = books.map(book => {
+      return { ...book, selected: false }
+    })
+    newBook[index].selected = true;
+    setBooks([...newBook])
+  }
+
+  // const newBook = books[index].children.map((book) => {
+  //     console.log(book)
+  // console.log(book.children)
+  // console.log(book)
+  // console.log(books[index].children)
+  // console.log(book)
+  // console.log(book)
+  // console.log(book[index])
+  // console.log(book.children)
+  // const newChildren = book.children.map((children) => {
+  // activeValue()
+  // console.log(indexChild)
+  // console.log(children)
+  // children[indexChild].selected = true;
+
+  // return { ...children }
+  // })
+  // console.log(newChildren)
+  // console.log(newChildren, 'new')
+  // newChildren[indexChild].selected = true;
+  // setChildrenBook([...newChildren]);
+  // return { ...book, selected: false }
+  // setNewBook2([...newChildren]);
+  // })
+  // setBooks(newBook2 )
+  // console.log(books);
+  // console.log([...newBook]);
+  // setBooks([...newBook])
+  // newBook[index].selected = true;
+  // return newBook;
+
+  // console.log(books, 'nach')
+  // console.log(newArr2,'kon')
+  // useEffect(() => {
+  //   console.log(books, 'nach')
+  //   console.log(newBook2, 'kon')
+  // }, [newBook2])
 
   return (
     <li
@@ -38,16 +86,10 @@ export const InternalLists = (
           <span
             className='selected-text'
             onClick={() => {
-              console.log(books)
               getTheSelectedValue(book.title);
-              const newBook = books.map(book=> {
-                return {...book, selected:false}
-              })
-              newBook[index].selected = true;
-              setBooks([...newBook])
-            }
-            }
-          >
+              activateValue()
+              // setIndexList(index);
+            }}>
                 {book.title}
               </span>
         </div>
@@ -55,16 +97,21 @@ export const InternalLists = (
       </div>
       {
         openListValues && <ul>
-          {book.children.map((children, index) => (
+          {book.children.map((children, indexChild) => (
             <InternalLists2
-              key={index}
+              allChildren={book.children}
+              key={indexChild}
               activevalue={activeValue}
               getTheSelectedValue={getTheSelectedValue}
               children={children}
               setActiveValue={setActiveValue}
               setBooks={setBooks}
-              index={index}
+              indexChild={indexChild}
               books={books}
+              index={index}
+              activateValue={activateValue}
+              // activateValue2={activateValue2}
+              bookTitle={book.title}
             />
           ))}
         </ul>
